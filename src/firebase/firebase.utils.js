@@ -13,6 +13,35 @@ const config = {
   measurementId: "G-VMR9X40SPX",
 };
 
+export const getReference = (path) => {
+  try {
+    const ref = firestore.doc(path);
+    return ref;
+  } catch (error) {
+    console.error(error);
+  }
+  return null;
+};
+
+export const get = async (reference) => {
+  try {
+    const snapShot = await reference.get();
+    return snapShot;
+  } catch (error) {
+    console.error(error);
+  }
+  return null;
+};
+
+export const set = async (ref, req) => {
+  try {
+    await ref.set(req);
+  } catch (error) {
+    console.error(error);
+  }
+  return ref;
+};
+
 firebase.initializeApp(config);
 
 export const auth = firebase.auth();
