@@ -1,6 +1,10 @@
 import { CartActionTypes } from "./cart-types";
 
-export const setCartIsOpen = (isOpen) => ({
-  type: CartActionTypes.SET_CART_IS_OPEN,
-  payload: isOpen,
+export const toggleCartHidden = () => ({
+  type: CartActionTypes.TOOGLE_CART_HIDDEN,
+});
+
+export const addItem = (item) => ({
+  type: CartActionTypes.ADD_ITEM,
+  payload: item,
 });
