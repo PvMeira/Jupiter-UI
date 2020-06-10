@@ -4,7 +4,7 @@ import "./style.scss";
 const CustomButton = ({
   children,
   primary = false,
-  inverted,
+  inverted = false,
   ...otherProps
 }) => (
   <button
