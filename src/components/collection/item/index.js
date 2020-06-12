@@ -12,7 +12,7 @@ import {
 
 const ItemCollection = ({ item, addItem }) => (
   <CollectionItemContainer>
-    <BackgroundImage />
+    <BackgroundImage imageUrl={item.imageUrl} />
     <CollectionFooterContainer>
       <NameContainer>{item.name}</NameContainer>
       <PriceContainer>{item.price}</PriceContainer>

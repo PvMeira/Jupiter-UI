@@ -2,18 +2,17 @@ import React from "react";
 import ItemCollection from "../../components/collection/item/index";
 import { connect } from "react-redux";
 import { selectCollection } from "../../config/redux/reducers/shop/shop-selectors";
-
-import "./style.scss";
+import { CollectionPageContainer, ItemsContainer, Title } from "./style";
 
 const CollectionPage = ({ collection: { title, items } }) => (
-  <div className='collection-page'>
-    <h2 className='title'>{title.toUpperCase()}</h2>
-    <div className='items'>
+  <CollectionPageContainer>
+    <Title>{title.toUpperCase()}</Title>
+    <ItemsContainer>
       {items.map((item) => (
         <ItemCollection key={item.id} item={item} />
       ))}
-    </div>
-  </div>
+    </ItemsContainer>
+  </CollectionPageContainer>
 );
 
 /** The second param(Props) is the own props of this component */
