@@ -11,13 +11,11 @@ import {
 
 const MenuItem = ({ title, imageUrl, size, history, linkUrl, match }) => (
   <MenuItemContainer
-    // @ts-ignore
     size={size}
     onClick={() => history.push(`${match.url}${linkUrl}`)}
   >
     <BackgroundImageContainer
       className='background-image'
-      // @ts-ignore
       imageUrl={imageUrl}
     />
     <ContentContainer className='content'>
