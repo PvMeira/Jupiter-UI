@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import FormInput from "../../core/form-input/index";
 import CustomButton from "../../core/custom-button/index";
 import { auth, signInWithGoogle } from "../../../firebase/firebase.utils";
-import "./style.scss";
+import { ButtonContainer, Title, SignInContainer } from "./style";
 
 const SignIn = () => {
   const [form, setForm] = useState({ email: "", password: "" });
@@ -22,8 +22,8 @@ const SignIn = () => {
     await setForm({ ...form, [name]: value });
   };
   return (
-    <div className='sign-in'>
-      <h2>I already have an account</h2>
+    <SignInContainer>
+      <Title>I already have an account</Title>
       <span>Sign in with your email and password</span>
 
       <form onSubmit={handleSubmit}>
@@ -45,14 +45,14 @@ const SignIn = () => {
           type='password'
           label='Password'
         />
-        <div className='buttons'>
+        <ButtonContainer>
           <CustomButton type='submit'>Sign In</CustomButton>
-          <CustomButton type='button' primary onClick={signInWithGoogle}>
+          <CustomButton type='button' isPrimary onClick={signInWithGoogle}>
             Sign in with google
           </CustomButton>
-        </div>
+        </ButtonContainer>
       </form>
-    </div>
+    </SignInContainer>
   );
 };
 
