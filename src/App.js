@@ -4,7 +4,9 @@ import { auth } from "./firebase/firebase.utils";
 import { connect } from "react-redux";
 import { setCurrentUser } from "./config/redux/reducers/user/user-actions";
 import { selectCurrentUser } from "./config/redux/reducers/user/user-selectors";
+import { toggleLoading } from "./config/redux/reducers/application/application-selectors";
 import { createStructuredSelector } from "reselect";
+import ReactLoading from "react-loading";
 
 import Header from "./components/core/header";
 import HomePage from "./screens/home/index";
@@ -16,7 +18,7 @@ import { createUser } from "./service/UserService";
 
 import "./App.css";
 
-function App({ setCurrentUser, currentUser }) {
+function App({ setCurrentUser, currentUser, isLoading }) {
   let unsubscribeFromAuth = null;
 
   useEffect(() => {
@@ -33,13 +35,13 @@ function App({ setCurrentUser, currentUser }) {
         setCurrentUser(userAuth);
       }
     });
-
     return () => {
       unsubscribeFromAuth();
     };
   }, []);
   return (
     <div>
+      {isLoading && <ReactLoading type='bars' color='black' />}
       <Header />
       <Switch>
         <Route exact path={"/"} component={HomePage} />
@@ -59,6 +61,7 @@ function App({ setCurrentUser, currentUser }) {
 
 const mapToStateProps = createStructuredSelector({
   currentUser: selectCurrentUser,
+  isLoading: toggleLoading,
 });
 
 const mapDispatchToProps = (dispatch) => ({

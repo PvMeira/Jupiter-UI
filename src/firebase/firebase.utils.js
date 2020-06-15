@@ -23,6 +23,15 @@ export const getReference = (path) => {
   return null;
 };
 
+export const getCollection = (path) => {
+  try {
+    return firestore.collection(path);
+  } catch (error) {
+    console.error(error);
+  }
+  return null;
+};
+
 export const get = async (reference) => {
   try {
     const snapShot = await reference.get();
